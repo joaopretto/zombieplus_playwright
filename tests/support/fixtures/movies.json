@@ -1,0 +1,82 @@
+{
+  "create": {
+    "title": "Guerra Mundial Z",
+    "overview": "Um ex-investigador da ONU precisa deter uma pandemia global que transforma humanos em zumbis velozes e agressivos.",
+    "company": "Paramount Pictures",
+    "release_year": 2013,
+    "featured": false,
+    "cover": "images/guerra_mundial_z.jpg"
+  },
+  "resident_evil_o_hospede_maldito": {
+    "title": "Resident Evil: O Hóspede Maldito",
+    "overview": "Um grupo de comando entra em um laboratório subterrâneo para conter um vazamento viral mortal que transforma pessoas em zumbis.",
+    "company": "Sony Pictures Releasing",
+    "release_year": 2002,
+    "featured": false,
+    "cover": "images/resident_evil_o_hospede_maldito.png"
+  },
+  "madrugada_dos_mortos": {
+    "title": "Madrugada dos Mortos",
+    "overview": "Sobreviventes se refugiam em um shopping center enquanto uma praga transforma a população em mortos-vivos.",
+    "company": "Universal Pictures",
+    "release_year": 2004,
+    "featured": false,
+    "cover": "images/madrugada_dos_mortos.jpg"
+  },
+  "exterminio": {
+    "title": "Extermínio",
+    "overview": "Um vírus rage se espalha rapidamente em Londres, deixando poucos sobreviventes em meio ao caos dos infectados.",
+    "company": "Fox Searchlight Pictures",
+    "release_year": 2002,
+    "featured": false,
+    "cover": "images/exterminio.jpg"
+  },
+  "exterminio_2": {
+    "title": "Extermínio 2",
+    "overview": "Seis meses após o surto inicial, militares tentam repopular Londres, mas o vírus volta a se espalhar.",
+    "company": "Fox Atomic",
+    "release_year": 2007,
+    "featured": false,
+    "cover": "images/exterminio_2.png"
+  },
+  "zumbilandia": {
+    "title": "Zumbilândia",
+    "overview": "Em um mundo pós-apocalíptico infestado de zumbis, um grupo improvável de sobreviventes segue regras peculiares para viver.",
+    "company": "Sony Pictures Releasing",
+    "release_year": 2009,
+    "featured": false,
+    "cover": "images/zumbilandia.jpg"
+  },
+  "zumbilandia_2": {
+    "title": "Zumbilândia: Atire Duas Vezes",
+    "overview": "O grupo de sobreviventes encara novos tipos de zumbis e conflitos internos enquanto busca um lugar seguro.",
+    "company": "Sony Pictures Releasing",
+    "release_year": 2019,
+    "featured": false,
+    "cover": "images/zumbilandia_2.png"
+  },
+  "invasao_zumbi": {
+    "title": "Invasão Zumbi",
+    "overview": "Passageiros de um trem precisam lutar para sobreviver quando um surto zumbi toma conta da Coreia do Sul.",
+    "company": "Next Entertainment World",
+    "release_year": 2016,
+    "featured": false,
+    "cover": "images/invasao_zumbi.jpg"
+  },
+  "dia_dos_mortos": {
+    "title": "Dia dos Mortos",
+    "overview": "Um grupo de militares e cientistas tenta sobreviver em um abrigo subterrâneo após a invasão global dos mortos-vivos.",
+    "company": "United Film Distribution Company",
+    "release_year": 1985,
+    "featured": false,
+    "cover": "images/dia_dos_mortos.png"
+  },
+  "a_noite_dos_mortos_vivos": {
+    "title": "A Noite dos Mortos-Vivos",
+    "overview": "Clássico de George A. Romero em que um grupo se refugia em uma casa contra mortos que voltam à vida.",
+    "company": "Continental Distributing",
+    "release_year": 1968,
+    "featured": false,
+    "cover": "images/a_noite_dos_mortos_vivos.jpg"
+  }
+}
