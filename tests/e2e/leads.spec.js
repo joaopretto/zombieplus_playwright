@@ -2,9 +2,9 @@ const { test, expect } = require("../support");
 const { getAuthenticatedContext } = require("../helper/auth");
 
 test("Deve cadastrar um lead na fila de espera", async ({ page }) => {
-  const api = await getAuthenticatedContext();
+  const { jsonContext } = await getAuthenticatedContext();
 
-  const response = await api.get("/leads", {
+  const response = await jsonContext.get("/leads", {
     params: {
       email: "joao@playwright.com",
     },
@@ -14,53 +14,53 @@ test("Deve cadastrar um lead na fila de espera", async ({ page }) => {
 
   if (body.total > 0) {
     const id = body.data[0].id;
-    const deleteLead = await api.delete(`/leads/${id}`);
+    const deleteLead = await jsonContext.delete(`/leads/${id}`);
     expect(deleteLead.ok()).toBeTruthy;
   }
 
-  await page.landing.visit();
-  await page.landing.openLeadModal();
-  await page.landing.submitLeadForm("Joao Pretto", "joao@playwright.com");
+  await page.leads.visit();
+  await page.leads.openLeadModal();
+  await page.leads.submitLeadForm("Joao Pretto", "joao@playwright.com");
 
   const message =
-    "Agradecemos por compartilhar seus dados conosco. Em breve, nossa equipe entrará em contato!";
-  await page.toast.haveText(message);
+    "Agradecemos por compartilhar seus dados conosco. Em breve, nossa equipe entrará em contato.";
+  await page.popup.haveText(message);
 });
 
 test("Não deve cadastrar um lead na fila de espera", async ({ page }) => {
-  await page.landing.visit();
-  await page.landing.openLeadModal();
-  await page.landing.submitLeadForm("LeadCadastrada", "leadCadastrada@playwright.com");
+  await page.leads.visit();
+  await page.leads.openLeadModal();
+  await page.leads.submitLeadForm("LeadCadastrada", "leadCadastrada@playwright.com");
 
   const message =
-    "O endereço de e-mail fornecido já está registrado em nossa fila de espera.";
-  await page.toast.haveText(message);
+    "Verificamos que o endereço de e-mail fornecido já consta em nossa lista de espera. Isso significa que você está um passo mais perto de aproveitar nossos serviços.";
+  await page.popup.haveText(message);
 });
 
 test("Não deve cadastrar com email invalído", async ({ page }) => {
-  await page.landing.visit();
-  await page.landing.openLeadModal();
-  await page.landing.submitLeadForm("Joao Pretto", "joao.playwright.com");
-  await page.landing.alertHaveText("Email incorreto");
+  await page.leads.visit();
+  await page.leads.openLeadModal();
+  await page.leads.submitLeadForm("Joao Pretto", "joao.playwright.com");
+  await page.leads.alertHaveText("Email incorreto");
 });
 
 test("Não deve cadastrar sem nome preenchido", async ({ page }) => {
-  await page.landing.visit();
-  await page.landing.openLeadModal();
-  await page.landing.submitLeadForm("", "joao@playwright.com");
-  await page.landing.alertHaveText("Campo obrigatório");
+  await page.leads.visit();
+  await page.leads.openLeadModal();
+  await page.leads.submitLeadForm("", "joao@playwright.com");
+  await page.leads.alertHaveText("Campo obrigatório");
 });
 
 test("Não deve cadastrar sem email preenchido", async ({ page }) => {
-  await page.landing.visit();
-  await page.landing.openLeadModal();
-  await page.landing.submitLeadForm("Joao Pretto", "");
-  await page.landing.alertHaveText("Campo obrigatório");
+  await page.leads.visit();
+  await page.leads.openLeadModal();
+  await page.leads.submitLeadForm("Joao Pretto", "");
+  await page.leads.alertHaveText("Campo obrigatório");
 });
 
 test("Não deve cadastrar com nenhum campo preenchido", async ({ page }) => {
-  await page.landing.visit();
-  await page.landing.openLeadModal();
-  await page.landing.submitLeadForm("", "");
-  await page.landing.alertHaveText(["Campo obrigatório", "Campo obrigatório"]);
+  await page.leads.visit();
+  await page.leads.openLeadModal();
+  await page.leads.submitLeadForm("", "");
+  await page.leads.alertHaveText(["Campo obrigatório", "Campo obrigatório"]);
 });

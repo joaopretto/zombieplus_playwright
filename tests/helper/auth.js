@@ -1,33 +1,48 @@
+require('dotenv').config();
+
 const { request } = require("@playwright/test");
 
-async function getAuthenticatedContext() {
+async function getAuthToken() {
   const apiContext = await request.newContext({
-    baseURL: "http://localhost:3333",
+    baseURL: process.env.BASE_API,
   });
 
   const loginResponse = await apiContext.post("/sessions", {
     data: {
-      email: "admin@zombieplus.com", 
-      password: "pwd123",  
+      email: "admin@zombieplus.com",
+      password: "pwd123",
     },
   });
 
   if (!loginResponse.ok()) {
-    throw new Error(`Login falhou: ${loginResponse.status()} ${loginResponse.statusText()}`);
+    throw new Error(
+      `Login falhou: ${loginResponse.status()} ${loginResponse.statusText()}`
+    );
   }
 
   const body = await loginResponse.json();
-  const token = body.token; 
+  return body.token;
+}
 
-  const authContext = await request.newContext({
-    baseURL: "http://localhost:3333",
+async function getAuthenticatedContext() {
+  const token = await getAuthToken();
+
+  const jsonContext = await request.newContext({
+    baseURL: process.env.BASE_API,
     extraHTTPHeaders: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
 
-  return authContext;
+  const formDataContext = await request.newContext({
+      baseURL: process.env.BASE_API,
+      extraHTTPHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+  return { jsonContext, formDataContext};
 }
 
 module.exports = { getAuthenticatedContext };
